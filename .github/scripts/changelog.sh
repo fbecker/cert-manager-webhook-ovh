@@ -4,7 +4,7 @@ set -eu
 
 CHART_DIR="charts/cert-manager-webhook-ovh"
 
-COMMITS_TO_PUSH="$(git log --oneline origin..HEAD  | awk 'END { print NR }')"
+COMMITS_TO_PUSH="$(git log --oneline -- "origin..HEAD"  | awk 'END { print NR }')"
 
 if [ "$COMMITS_TO_PUSH" -ne "0" ]; then
     echo "All local commits should be pushed. (COMMITS_TO_PUSH='$COMMITS_TO_PUSH')"
