@@ -27,8 +27,8 @@ securityContext:
   allowPrivilegeEscalation: false
 
 image:
-  repository: baarde/cert-manager-webhook-ovh
-  # tag: latest
+  repository: ghcr.io/aureq/cert-manager-webhook-ovh
+  tag: v0.4.0-alpha.0
   pullPolicy: IfNotPresent
   # Use this set to assign a list of default pullSecrets
   pullSecrets: []
