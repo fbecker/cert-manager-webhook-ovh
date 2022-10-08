@@ -36,11 +36,13 @@ PREVIOUS_VERSION="$(git for-each-ref --format="%(refname)" --sort=-creatordate -
 
 CHART_VERSION="$(cat "$CHART_DIR/Chart.yaml" | sed '/^version:/!d; s/^version: \(.*\)/\1/g; s/"//g;')"
 CHART_APPVERSION="$(cat "$CHART_DIR/Chart.yaml" | sed '/^appVersion:/!d; s/^appVersion: \(.*\)/\1/g; s/"//g;')"
+VALUES_TAG="$(cat "$CHART_DIR/values.yaml" | sed '/^  tag:/!d; s/^  tag: \(.*\)/\1/g; s/"//g;')"
 
-if [ "$CURRENT_VERSION" != "$CHART_VERSION" -o "$CURRENT_VERSION" != "$CHART_APPVERSION" ]; then
+if [ "$CURRENT_VERSION" != "$CHART_VERSION" -o "$CURRENT_VERSION" != "$CHART_APPVERSION" -o "$CURRENT_VERSION" != "$VALUES_TAG" ]; then
     echo "Version mismatch. The following values should match."
     echo "$CHART_DIR/Chart.yaml: appVersion: $CHART_APPVERSION"
     echo "$CHART_DIR/Chart.yaml: version: $CHART_VERSION"
+    echo "$CHART_DIR/values.yaml: tag: $VALUES_TAG"
     echo "Command: $CURRENT_VERSION"
     exit 1
 fi
