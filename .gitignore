@@ -18,3 +18,6 @@ _out
 # Test data
 testdata/ovh/config.json
 testdata/ovh/ovh-credentials.yaml
+
+# dummy data
+tmp
