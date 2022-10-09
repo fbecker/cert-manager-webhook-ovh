@@ -44,7 +44,7 @@ environment:
   # Use these variables to configure the HTTP_PROXY environment variables
   # HTTP_PROXY: "http://proxy:8080"
   # HTTPS_PROXY: "http://proxy:8080"
-  # NO_PROXY: 127.0.0.1,localhost,10.0.0.0/8
+  # NO_PROXY: "127.0.0.1,localhost,10.0.0.0/8"
 
 service:
   type: ClusterIP
