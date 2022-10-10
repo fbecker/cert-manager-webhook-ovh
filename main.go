@@ -62,9 +62,9 @@ type ovhDNSProviderSolver struct {
 // resource and fetch these credentials using a Kubernetes clientset.
 type ovhDNSProviderConfig struct {
 	Endpoint             string                   `json:"endpoint"`
-	ApplicationKey       string                   `json:"applicationKey"`
+	ApplicationKeyRef    corev1.SecretKeySelector `json:"applicationKeyRef"`
 	ApplicationSecretRef corev1.SecretKeySelector `json:"applicationSecretRef"`
-	ConsumerKey          string                   `json:"consumerKey"`
+	ConsumerKeyRef       corev1.SecretKeySelector `json:"consumerKeyRef"`
 }
 
 type ovhZoneStatus struct {
@@ -98,13 +98,13 @@ func (s *ovhDNSProviderSolver) validate(cfg *ovhDNSProviderConfig, allowAmbientC
 	if cfg.Endpoint == "" {
 		return errors.New("no endpoint provided in OVH config")
 	}
-	if cfg.ApplicationKey == "" {
+	if cfg.ApplicationKeyRef.Name == "" {
 		return errors.New("no application key provided in OVH config")
 	}
 	if cfg.ApplicationSecretRef.Name == "" {
 		return errors.New("no application secret provided in OVH config")
 	}
-	if cfg.ConsumerKey == "" {
+	if cfg.ConsumerKeyRef.Name == "" {
 		return errors.New("no consumer key provided in OVH config")
 	}
 	return nil
@@ -121,12 +121,22 @@ func (s *ovhDNSProviderSolver) ovhClient(ch *v1alpha1.ChallengeRequest) (*ovh.Cl
 		return nil, err
 	}
 
+	applicationKey, err := s.secret(cfg.ApplicationKeyRef, ch.ResourceNamespace)
+	if err != nil {
+		return nil, err
+	}
+
 	applicationSecret, err := s.secret(cfg.ApplicationSecretRef, ch.ResourceNamespace)
 	if err != nil {
 		return nil, err
 	}
 
-	return ovh.NewClient(cfg.Endpoint, cfg.ApplicationKey, applicationSecret, cfg.ConsumerKey)
+	consumerKey, err := s.secret(cfg.ConsumerKeyRef, ch.ResourceNamespace)
+	if err != nil {
+		return nil, err
+	}
+
+	return ovh.NewClient(cfg.Endpoint, applicationKey, applicationSecret, consumerKey)
 }
 
 func (s *ovhDNSProviderSolver) secret(ref corev1.SecretKeySelector, namespace string) (string, error) {
