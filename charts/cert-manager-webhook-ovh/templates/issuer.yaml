@@ -52,5 +52,6 @@ spec:
               name: {{ .ovhAuthenticationRef.consumerKeyRef.name }}
               key: {{ .ovhAuthenticationRef.consumerKeyRef.key }}
             {{- end }}
+---
   {{- end }}{{/* end if .create */}}
 {{- end }}{{/* end range */}}
