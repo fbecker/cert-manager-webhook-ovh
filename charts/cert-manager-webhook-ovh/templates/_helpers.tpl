@@ -46,3 +46,48 @@ Create chart name and version as used by the chart label.
 {{- define "cert-manager-webhook-ovh.servingCertificate" -}}
 {{ printf "%s-webhook-tls" (include "cert-manager-webhook-ovh.fullname" .) }}
 {{- end -}}
+
+{{/*
+Returns true if ovhAuthentication is correctly set.
+*/}}
+{{- define "cert-manager-webhook-ovh.isOvhAuthenticationAvail" -}}
+  {{- if . -}}
+    {{- if and (.consumerKey) (.applicationKey) (.applicationSecret) -}}
+      {{- eq "true" "true" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{/*
+Returns true if ovhAuthenticationRef is correctly set.
+*/}}
+{{- define "cert-manager-webhook-ovh.isOvhAuthenticationRefAvail" -}}
+  {{- if . -}}
+    {{- if or (not .consumerKeyRef) (not .applicationKeyRef) (not .applicationSecretRef) }}
+      {{- fail "When 'ovhAuthenticationRef' is used, 'consumerKeyRef', 'applicationKeyRef' and 'applicationSecretRef' need to be provided." }}
+    {{- end }}
+    {{- if or (not .consumerKeyRef.name) (not .consumerKeyRef.key) }}
+      {{ fail "When 'ovhAuthenticationRef' is used, you need to provide 'ovhAuthenticationRef.consumerKeyRef.name' and 'ovhAuthenticationRef.consumerKeyRef.key'" }}
+    {{- end }}
+    {{- if or (not .applicationKeyRef.name) (not .applicationKeyRef.key) }}
+      {{ fail "When 'ovhAuthenticationRef' is used, you need to provide 'ovhAuthenticationRef.applicationKeyRef.name' and 'ovhAuthenticationRef.applicationKeyRef.key'" }}
+    {{- end }}
+    {{- if or (not .applicationSecretRef.name) (not .applicationSecretRef.key) }}
+      {{ fail "When 'ovhAuthenticationRef' is used, you need to provide 'ovhAuthenticationRef.applicationSecretRef.name' and 'ovhAuthenticationRef.applicationSecretRef.key'" }}
+    {{- end }}
+    {{- eq "true" "true" -}}
+  {{- end -}}
+{{- end -}}
+
+{{/*
+Returns the number of Issuer/ClusterIssuer to create
+*/}}
+{{- define "cert-manager-webhook-ovh.isIssuerToCreate" -}}
+  {{- $issuerCount := 0 }}
+  {{- range $.Values.issuers }}
+    {{- if .create }}
+      {{- $issuerCount = $issuerCount | add1 -}}
+    {{- end }}{{/* end if .create */}}
+  {{- end }}{{/* end range */}}
+  {{- $issuerCount }}
+{{- end }}{{/* end define */}}
