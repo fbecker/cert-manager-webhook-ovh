@@ -39,7 +39,7 @@ spec:
               key: "applicationSecret"
             consumerKeyRef:
               name: {{ printf "%s-ovh-credentials" .name }}
-              key: "consumerKeyRef"
+              key: "consumerKey"
             {{- end }}
             {{- if eq (include "cert-manager-webhook-ovh.isOvhAuthenticationRefAvail" .ovhAuthenticationRef) "true" }}
             applicationKeyRef:
