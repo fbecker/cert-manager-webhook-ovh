@@ -129,12 +129,6 @@ subjects:
     namespace: {{ .Release.Namespace | quote }}
 ---
 {{- if gt (include "cert-manager-webhook-ovh.isIssuerToCreate" $ | int ) 0 }}
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: {{ include "cert-manager-webhook-ovh.fullname" . }}:secret-reader
-  namespace: {{ $.Release.Namespace | quote }}
-rules:
   {{- $secretsList := list }}
   {{- range $.Values.issuers }}
     {{- if .create }}
@@ -150,30 +144,38 @@ rules:
       {{- end }}{{/* end if eq .kind "ClusterIssuer" */}}
     {{- end }}{{/* end if .create */}}
   {{- end }}{{/* end range */}}
+  {{- if len $secretsList }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "cert-manager-webhook-ovh.fullname" $ }}:secret-reader
+  namespace: {{ $.Release.Namespace | quote }}
+rules:
 - apiGroups: [""]
   resources: ["secrets"]
   verbs: ["get", "watch"]
   resourceNames:
-  {{- $secretsList = $secretsList | uniq | sortAlpha }}
-  {{- range $secretsList }}
+    {{- $secretsList = $secretsList | uniq | sortAlpha }}
+    {{- range $secretsList }}
     - {{ . | quote }}
-  {{- end }}
+    {{- end }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ include "cert-manager-webhook-ovh.fullname" . }}:secret-reader
+  name: {{ include "cert-manager-webhook-ovh.fullname" $ }}:secret-reader
   namespace: {{ $.Release.Namespace | quote }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: {{ include "cert-manager-webhook-ovh.fullname" . }}:secret-reader
+  name: {{ include "cert-manager-webhook-ovh.fullname" $ }}:secret-reader
 subjects:
 - apiGroup: ""
   kind: ServiceAccount
-  name: {{ include "cert-manager-webhook-ovh.fullname" . }}
+  name: {{ include "cert-manager-webhook-ovh.fullname" $ }}
   namespace: {{ .Release.Namespace | quote }}
 ---
+  {{- end }}
 {{- end }}
 {{- if gt (include "cert-manager-webhook-ovh.isIssuerToCreate" $ | int ) 0 }}
   {{- $namespaceList := list }}
