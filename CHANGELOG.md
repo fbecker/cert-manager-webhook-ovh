@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.4.0-alpha.1
+
+### Major features
+
+- ⚠️ breaking changes ahead
+- ✨ major helm chart imrprovements
+- ✨ deploy multiple `Issuer` (namespaced) and `ClusterIssuer` via chart
+- ✨ either specify your OVH credentials, or use an existing secret
+- ✨ OVH credential are all stored in a secret (ApplicationKey, ApplicaitonSecret, ConsumerKey)
+- ✨ deploy necessary permissions to access the OVH credentials
+- ✨ role based access control to access secrets across namespaces
+
+### Note worthy changes
+
+- ✨ move some helm logic in _helpers.tpl
+- ✨ completely rework `values.yaml` to support creating issuers and ovh credentials
+- ✨ create role and bind it so the webhook can access necessary secrets
+- 📄 documentation and helm chart hosted at https://aureq.github.io/cert-manager-webhook-ovh/
+
 ## v0.4.0-alpha.0
 
 ### Major features
