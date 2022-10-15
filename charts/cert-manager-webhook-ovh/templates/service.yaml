@@ -13,5 +13,4 @@ spec:
       protocol: TCP
       name: https
   selector:
-    app: {{ include "cert-manager-webhook-ovh.name" . }}
-    release: {{ .Release.Name }}
+    {{- include "cert-manager-webhook-ovh.selectorLabels" $ | nindent 4 }}
