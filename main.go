@@ -18,12 +18,15 @@ import (
 	"github.com/cert-manager/cert-manager/pkg/acme/webhook/apis/acme/v1alpha1"
 	"github.com/cert-manager/cert-manager/pkg/acme/webhook/cmd"
 	"github.com/cert-manager/cert-manager/pkg/issuer/acme/dns/util"
+	logf "github.com/cert-manager/cert-manager/pkg/logs"
 	"github.com/ovh/go-ovh/ovh"
 )
 
 var GroupName = os.Getenv("GROUP_NAME")
 
 func main() {
+	logf.Log.Info("Webhook starting...")
+
 	if GroupName == "" {
 		panic("GROUP_NAME must be specified")
 	}
@@ -90,6 +93,8 @@ func (s *ovhDNSProviderSolver) Name() string {
 }
 
 func (s *ovhDNSProviderSolver) validate(cfg *ovhDNSProviderConfig, allowAmbientCredentials bool) error {
+	logf.Log.Info("Validating provider config...")
+
 	if allowAmbientCredentials {
 		// When allowAmbientCredentials is true, OVH client can load missing config
 		// values from the environment variables and the ovh.conf files.
@@ -107,14 +112,18 @@ func (s *ovhDNSProviderSolver) validate(cfg *ovhDNSProviderConfig, allowAmbientC
 	if cfg.ConsumerKeyRef.Name == "" {
 		return errors.New("no consumer key provided in OVH config")
 	}
+	logf.Log.Info("Provider config: passed.")
 	return nil
 }
 
 func (s *ovhDNSProviderSolver) ovhClient(ch *v1alpha1.ChallengeRequest) (*ovh.Client, error) {
+	logf.Log.Info("Starting challenge request...")
 	cfg, err := loadConfig(ch.Config)
 	if err != nil {
 		return nil, err
 	}
+
+	logf.Log.Info(fmt.Sprintf("Resource namespace: %s", ch.ResourceNamespace))
 
 	err = s.validate(&cfg, ch.AllowAmbientCredentials)
 	if err != nil {
