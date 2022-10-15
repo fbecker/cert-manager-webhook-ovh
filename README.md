@@ -18,6 +18,10 @@ Please star this repository to help others find it.
 
 The documentation is available at https://aureq.github.io/cert-manager-webhook-ovh/
 
+## Maintainers
+
+- [@aureq](https://github.com/aureq)
+
 ## Contributors
 
 - [@munnerz](https://github.com/munnerz)
