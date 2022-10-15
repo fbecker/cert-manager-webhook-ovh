@@ -1,11 +1,52 @@
 # Changelog
 
+## v0.4.0
+
+### Major features
+
+- ⚠️ breaking changes ahead if comming from previous version
+- 📄 documentation and helm chart hosted at https://aureq.github.io/cert-manager-webhook-ovh/
+- ✨ deploy multiple `Issuer` (namespaced) and `ClusterIssuer` via chart
+- ✨ either specify your OVH credentials, or use an existing secret
+- ✨ OVH credential are all stored in a secret (ApplicationKey, ApplicaitonSecret, ConsumerKey)
+- ✨ deploy necessary permissions to access the OVH credentials
+- ✨ role based access control to access secrets across namespaces
+- 🚀 publish container image on GitHub Container Registry
+- 🚀 publish Helm Chart on GitHub pages
+- ⬆️ upgrade dependencies to reduce warnings
+- ✨ drop root privileges
+- ✨ add support for HTTP/HTTPS proxy
+
+### Note worthy changes
+
+- 🚀 use kubernetes recommended labels
+- ✨ move some helm logic in _helpers.tpl
+- ✨ completely rework `values.yaml` to support creating issuers and ovh credentials
+- ✨ create role and bind it so the webhook can access necessary secrets
+- ⬆️ upgrade dependencies to reduce warnings
+  - cert-manager `v1.5.3` to `v1.9.1`
+  - go-ovh `v1.1.0` to `v1.3.0`
+  - client-go `v0.22.1` to `v0.24.2`
+- build webhook using golang `1.18`
+- ✨ add image pull secrets to helm chart by Julian Stiller)
+- 🐛 fix base64 encoded secrets by [@julienkosinski](https://github.com/julienkosinski)
+- 🔥 drop root privilges (missing attribution)
+- 🐛 fix how security context is checked
+- ✨ add RBAC (missing attribution)
+- ⬆️ upgrade to Alpine Linux 3.16 container image
+- 🐛 fix `Makefile` references and enable HTTP proxy to local build environment
+- ✨ set `CAP_NET_BIND_SERVICE` to binary to bind on privileged ports without root privileges (missing attribution)
+- 🐛 add `libpcap` to container image
+- ✨ create logo based on cert-manager logo and [icons8](https://icons8.com/icon/92/link)
+- ✨ more fields populated in `Chart.yaml`
+- 🌱 some ground work to automate the release process via GitHub Actions and GitHub packages
+
 ## v0.4.0-alpha.1
 
 ### Major features
 
 - ⚠️ breaking changes ahead
-- ✨ major helm chart imrprovements
+- ✨ major helm chart improvements
 - ✨ deploy multiple `Issuer` (namespaced) and `ClusterIssuer` via chart
 - ✨ either specify your OVH credentials, or use an existing secret
 - ✨ OVH credential are all stored in a secret (ApplicationKey, ApplicaitonSecret, ConsumerKey)
