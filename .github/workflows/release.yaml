@@ -103,11 +103,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -x
-          set
-          ls -la
-          find ./
-          git status
           test -d packages || mkdir packages
           gh release upload "$GITHUB_REF_NAME" tmp/packages/*
           mv tmp/packages/* packages/
