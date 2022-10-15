@@ -91,3 +91,25 @@ Returns the number of Issuer/ClusterIssuer to create
   {{- end }}{{/* end range */}}
   {{- $issuerCount }}
 {{- end }}{{/* end define */}}
+
+{{/*
+Common/recommended labels: https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
+*/}}
+{{- define "cert-manager-webhook-ovh.labels" -}}
+helm.sh/chart: {{ include "cert-manager-webhook-ovh.chart" . }}
+app.kubernetes.io/component: webhook
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+app.kubernetes.io/part-of: cert-manager
+{{ include "cert-manager-webhook-ovh.selectorLabels" . }}
+{{- if or .Chart.AppVersion .Values.image.tag }}
+app.kubernetes.io/version: {{ .Values.image.tag | default .Chart.AppVersion | quote }}
+{{- end }}
+{{- end -}}
+
+{{/*
+Selector labels
+*/}}
+{{- define "cert-manager-webhook-ovh.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "cert-manager-webhook-ovh.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end -}}

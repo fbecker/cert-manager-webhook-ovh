@@ -7,10 +7,7 @@ apiVersion: cert-manager.io/v1
 kind: {{ .kind }}
 metadata:
   labels:
-    app: {{ include "cert-manager-webhook-ovh.name" $ }}
-    chart: {{ include "cert-manager-webhook-ovh.chart" $ }}
-    release: {{ $.Release.Name }}
-    heritage: {{ $.Release.Service }}
+    {{- include "cert-manager-webhook-ovh.labels" $ | nindent 4 }}
   name: {{ .name | quote }}
   {{- if eq .kind "Issuer" }}
   namespace: {{ .namespace | quote }}
