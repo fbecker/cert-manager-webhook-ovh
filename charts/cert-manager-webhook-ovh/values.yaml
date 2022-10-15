@@ -153,6 +153,9 @@ environment:
   # HTTPS_PROXY: "http://proxy:8080"
   # NO_PROXY: "127.0.0.1,localhost,10.0.0.0/8"
 
+# number of replicas in this deployment
+replicas: 1
+
 service:
   type: ClusterIP
   port: 443
