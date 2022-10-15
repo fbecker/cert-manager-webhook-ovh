@@ -2,125 +2,33 @@
 
 ![OVH Webhook for Cert Manager](assets/images/cert-manager-webhook-ovh.svg "OVH Webhook for Cert Manager")
 
-This is a webhook solver for [OVH](http://www.ovh.com) DNS.
+This is a webhook solver for [OVH](http://www.ovh.com) DNS. In short, if your domain has its DNS servers hosted with OVH, you can solve DNS challenges using Cert Manager and OVH Webhook for Cert Manager.
 
-## Prerequisites
+Please star this repository to help others find it.
 
-* [cert-manager](https://github.com/jetstack/cert-manager) version 1.5.3 or higher:
-  - [Installing on Kubernetes](https://cert-manager.io/docs/installation/kubernetes/#installing-with-helm)
+## Features
 
-## Installation
+- Solve DNS01 challenges using OVH DNS servers
+- Supports Cert Manager `ClusterIssuer` and `Issuer`
+- Helm chart repository for ease and simplicity
+- Store OVH credentials in a secret per issuer, or use secret references
+- Role based access control, across namespace
 
-Choose a unique group name to identify your company or organization (for example `acme.mycompany.example`).
+## Documentation
 
-```bash
-helm install cert-manager-webhook-ovh ./deploy/cert-manager-webhook-ovh \
- --set groupName='<YOUR_UNIQUE_GROUP_NAME>'
-```
+The documentation is available at https://aureq.github.io/cert-manager-webhook-ovh/
 
-If you customized the installation of cert-manager, you may need to also set the `certManager.namespace` and `certManager.serviceAccountName` values.
+## Contributors
 
-## Issuer
-
-1. [Create a new OVH API key](https://docs.ovh.com/gb/en/customer/first-steps-with-ovh-api/) with the following rights:
-    * `GET /domain/zone/*`
-    * `PUT /domain/zone/*`
-    * `POST /domain/zone/*`
-    * `DELETE /domain/zone/*`
-
-2. Create a secret to store your application secret:
-
-    ```bash
-    kubectl create secret generic ovh-credentials \
-      --from-literal=applicationSecret='<OVH_APPLICATION_SECRET>'
-    ```
-
-3. Grant permission to get the secret to the `cert-manager-webhook-ovh` service account:
-
-    ```yaml
-    apiVersion: rbac.authorization.k8s.io/v1
-    kind: Role
-    metadata:
-      name: cert-manager-webhook-ovh:secret-reader
-    rules:
-    - apiGroups: [""]
-      resources: ["secrets"]
-      resourceNames: ["ovh-credentials"]
-      verbs: ["get", "watch"]
-    ---
-    apiVersion: rbac.authorization.k8s.io/v1
-    kind: RoleBinding
-    metadata:
-      name: cert-manager-webhook-ovh:secret-reader
-    roleRef:
-      apiGroup: rbac.authorization.k8s.io
-      kind: Role
-      name: cert-manager-webhook-ovh:secret-reader
-    subjects:
-    - apiGroup: ""
-      kind: ServiceAccount
-      name: cert-manager-webhook-ovh
-    ```
-
-4. Create a certificate issuer:
-
-    ```yaml
-    apiVersion: cert-manager.io/v1
-    kind: Issuer
-    metadata:
-      name: letsencrypt
-    spec:
-      acme:
-        server: https://acme-v02.api.letsencrypt.org/directory
-        email: '<YOUR_EMAIL_ADDRESS>'
-        privateKeySecretRef:
-          name: letsencrypt-account-key
-        solvers:
-        - dns01:
-            webhook:
-              groupName: '<YOUR_UNIQUE_GROUP_NAME>'
-              solverName: ovh
-              config:
-                endpoint: ovh-eu
-                applicationKey: '<OVH_APPLICATION_KEY>'
-                applicationSecretRef:
-                  key: applicationSecret
-                  name: ovh-credentials
-                consumerKey: '<OVH_CONSUMER_KEY>'
-    ```
-
-## Certificate
-
-Issue a certificate:
-
-```yaml
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: example-com
-spec:
-  dnsNames:
-  - "example.com"
-  - "*.example.com"
-  issuerRef:
-    name: letsencrypt
-  secretName: example-com-tls
-```
-
-## Development
-
-All DNS providers **must** run the DNS01 provider conformance testing suite,
-else they will have undetermined behaviour when used with cert-manager.
-
-**It is essential that you configure and run the test suite when creating a
-DNS01 webhook.**
-
-An example Go test file has been provided in [main_test.go]().
-
-Before you can run the test suite, you need to duplicate the `.sample` files in `testdata/ovh/` and update the configuration with the appropriate OVH credentials.
-
-You can run the test suite with:
-
-```bash
-TEST_ZONE_NAME=example.com. make test
-```
+- [@munnerz](https://github.com/munnerz)
+- [@Diaphteiros](https://github.com/Diaphteiros)
+- [@baarde](https://github.com/baarde)
+- Xaver Baun
+- lcavajani
+- Ricardo Pchevuzinske Katz
+- [@MattiasGees](https://github.com/MattiasGees)
+- Jean-Marc Andre
+- [@IDerr](https://github.com/IDerr)
+- Robin KERDILES
+- Julian Stiller
+- [@julienkosinski](https://github.com/julienkosinski)
