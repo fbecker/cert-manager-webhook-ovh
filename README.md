@@ -36,3 +36,4 @@ The documentation is available at https://aureq.github.io/cert-manager-webhook-o
 - Robin KERDILES
 - Julian Stiller
 - [@julienkosinski](https://github.com/julienkosinski)
+- [@aegaeonit](https://github.com/aegaeonit)
