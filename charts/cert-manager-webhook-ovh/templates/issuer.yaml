@@ -22,6 +22,7 @@ spec:
       name: {{ printf "%s-account-key" .name | quote }}
     solvers:
     - dns01:
+        cnameStrategy: {{ .cnameStrategy | default "None" | quote }}
         webhook:
           solverName: ovh
           groupName: {{ $.Values.groupName | quote }}
