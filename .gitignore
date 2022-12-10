@@ -21,3 +21,7 @@ testdata/ovh/ovh-credentials.yaml
 
 # dummy data
 tmp
+
+# IDE files
+.idea
+.vscode

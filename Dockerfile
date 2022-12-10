@@ -1,31 +1,22 @@
-FROM golang:1.18-alpine AS build_deps
+FROM docker.io/golang:1.19.3 as build
 
-RUN apk update && \
-    apk upgrade && \
-    apk add --no-cache git
+RUN apt update && apt install -y libcap2-bin
 
-WORKDIR /workspace
+WORKDIR /go/src/app
 ENV GO111MODULE=on
-
-COPY go.mod .
-COPY go.sum .
-
-RUN go mod download
-
-FROM build_deps AS build
-
 COPY . .
 
-RUN CGO_ENABLED=0 go build -o webhook -ldflags '-s -w -extldflags "-static"' .
+RUN go mod download
+RUN CGO_ENABLED=0 go build -o /go/bin/app -ldflags '-s -w -extldflags "-static"' .
 
-FROM alpine:3.16
+FROM gcr.io/distroless/base-debian11
 
-RUN apk upgrade --no-cache && \
-    apk add --no-cache ca-certificates libcap
+COPY --from=build /go/bin/app /
 
-COPY --from=build /workspace/webhook /usr/local/bin/webhook
+COPY --from=build /sbin/setcap /sbin
+COPY --from=build /lib/*-linux-gnu/libcap.so.2 /lib
 
-# allow bind() for ports < 1024 as non-root
-RUN setcap cap_net_bind_service=+ep /usr/local/bin/webhook
+RUN ["/sbin/setcap", "cap_net_bind_service=+ep", "/app"]
 
-ENTRYPOINT ["/usr/local/bin/webhook"]
+USER nonroot:nonroot
+ENTRYPOINT ["/app"]
