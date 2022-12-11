@@ -28,7 +28,7 @@ issuers:
     # Follow CNAME records or not. 2 options:
     # - None (default): Don't follow CNAME records
     # - Follow: Follow CNAME records
-    # See https://cert-manager.io/docs/configuration/acme/dns01/#delegated-domains-for-dns01 foor more informations
+    # See https://cert-manager.io/docs/configuration/acme/dns01/#delegated-domains-for-dns01 for more informations
     cnameStrategy: None
     # The acme server url. For Let's encrypt, you have 2 options:
     # - for production (default): https://acme-v02.api.letsencrypt.org/directory
@@ -89,7 +89,7 @@ issuers:
     # Follow CNAME records or not. 2 options:
     # - None (default): Don't follow CNAME records
     # - Follow: Follow CNAME records
-    # See https://cert-manager.io/docs/configuration/acme/dns01/#delegated-domains-for-dns01 foor more informations
+    # See https://cert-manager.io/docs/configuration/acme/dns01/#delegated-domains-for-dns01 for more informations
     cnameStrategy: None
     # The acme server url. For Let's encrypt, you have 2 options:
     # - for production (default): https://acme-v02.api.letsencrypt.org/directory
