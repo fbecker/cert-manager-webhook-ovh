@@ -18,10 +18,12 @@ test:
 
 build:
 	@test -z "$$HTTP_PROXY" -a -z "$$HTTPS_PROXY" || docker build \
+		--squash \
 		--build-arg "HTTP_PROXY=$$HTTP_PROXY" \
 		--build-arg "HTTPS_PROXY=$$HTTPS_PROXY" \
 		-t "$(IMAGE_NAME):$(IMAGE_TAG)" .
 	@test ! -z "$$HTTP_PROXY" -o ! -z "$$HTTPS_PROXY" || docker build \
+		--squash \
 		-t "$(IMAGE_NAME):$(IMAGE_TAG)" .
 
 rendered-manifest.yaml:
