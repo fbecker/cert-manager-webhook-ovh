@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.4.1-alpha.1
+
+### Noteworthy changes
+
+- 🐛 include minutes and seconds in certificates duration fields. see [argoproj/argo-cd#6008](https://github.com/argoproj/argo-cd/issues/6008) for details. via [@aegaeonit](https://github.com/aegaeonit)
+- ✨ optimize Dockerfile for better builds
+- ✨ explicitly use Alpine 3.16 throughout the Dockerfile
+- ✨ run the webhook as `nobody`/`nogroup`
+- ✨ reduce container image from 107MB down to 56.2MB
+
 ## v0.4.0
 
 ### Major features
@@ -17,7 +27,7 @@
 - ✨ drop root privileges
 - ✨ add support for HTTP/HTTPS proxy
 
-### Note worthy changes
+### Noteworthy changes
 
 - 🚀 use kubernetes recommended labels
 - ✨ move some helm logic in _helpers.tpl
@@ -70,7 +80,7 @@
 - ✨ drop root privileges
 - 🌱 some ground work to automate the release process via GitHub Actions
 
-### Note worthy changes
+### Noteworthy changes
 
 - ✨ add support for HTTP proxy
 - ⬆️ upgrade dependencies to reduce warnings
