@@ -1,6 +1,8 @@
-FROM docker.io/golang:1.19.3 as build
+FROM docker.io/golang:1.19-alpine3.16 as build
 
-RUN apt update && apt install -y libcap2-bin
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache git libcap
 
 WORKDIR /go/src/app
 ENV GO111MODULE=on
@@ -9,14 +11,14 @@ COPY . .
 RUN go mod download
 RUN CGO_ENABLED=0 go build -o /go/bin/app -ldflags '-s -w -extldflags "-static"' .
 
-FROM gcr.io/distroless/base-debian11
+FROM alpine:3.16
 
 COPY --from=build /go/bin/app /
 
-COPY --from=build /sbin/setcap /sbin
-COPY --from=build /lib/*-linux-gnu/libcap.so.2 /lib
+COPY --from=build /usr/sbin/setcap /usr/sbin/setcap
+COPY --from=build /usr/lib/libcap.so.2* /usr/lib/
 
-RUN ["/sbin/setcap", "cap_net_bind_service=+ep", "/app"]
+RUN /usr/sbin/setcap cap_net_bind_service=+ep /app
 
-USER nonroot:nonroot
+USER nobody:nogroup
 ENTRYPOINT ["/app"]
