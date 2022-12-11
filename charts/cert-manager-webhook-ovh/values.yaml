@@ -25,6 +25,11 @@ issuers:
     # If kind is issuer, then indicate the namespace in which this
     # issuer should be deployed into.
     namespace: default
+    # Follow CNAME records or not. 2 options:
+    # - None (default): Don't follow CNAME records
+    # - Follow: Follow CNAME records
+    # See https://cert-manager.io/docs/configuration/acme/dns01/#delegated-domains-for-dns01 foor more informations
+    cnameStrategy: None
     # The acme server url. For Let's encrypt, you have 2 options:
     # - for production (default): https://acme-v02.api.letsencrypt.org/directory
     # - for staging: https://acme-staging-v02.api.letsencrypt.org/directory
@@ -81,6 +86,11 @@ issuers:
     # If kind is issuer, then indicate the namespace in which this
     # issuer should be deployed into.
     namespace: default
+    # Follow CNAME records or not. 2 options:
+    # - None (default): Don't follow CNAME records
+    # - Follow: Follow CNAME records
+    # See https://cert-manager.io/docs/configuration/acme/dns01/#delegated-domains-for-dns01 foor more informations
+    cnameStrategy: None
     # The acme server url. For Let's encrypt, you have 2 options:
     # - for production (default): https://acme-v02.api.letsencrypt.org/directory
     # - for staging: https://acme-staging-v02.api.letsencrypt.org/directory
