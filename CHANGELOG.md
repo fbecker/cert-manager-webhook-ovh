@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.4.1-alpha.1
+## v0.4.1
 
 ### Noteworthy changes
 
@@ -9,6 +9,8 @@
 - ✨ explicitly use Alpine 3.16 throughout the Dockerfile
 - ✨ run the webhook as `nobody`/`nogroup`
 - ✨ reduce container image from 107MB down to 56.2MB
+- ✨ add CNAME strategy to issuers in [#8](https://github.com/aureq/cert-manager-webhook-ovh/pull/8). Thanks ([@Zcool85](https://github.com/Zcool85))
+- ✨ build image using Go 1.19.4
 
 ## v0.4.0
 
