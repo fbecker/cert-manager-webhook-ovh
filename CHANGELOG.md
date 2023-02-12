@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.4.2-alpha.0
+
+### Noteworthy changes
+
+- ⏩ update cert-manager dependency to v1.11.0
+- ⏩ update k8s dependency to v0.26.0
+- ✨ build image using Go 1.19.5
+
 ## v0.4.1
 
 ### Noteworthy changes
@@ -17,7 +25,7 @@
 ### Major features
 
 - ⚠️ breaking changes ahead if comming from previous version
-- 📄 documentation and helm chart hosted at https://aureq.github.io/cert-manager-webhook-ovh/
+- 📄 documentation and helm chart hosted at [https://aureq.github.io/cert-manager-webhook-ovh/](https://aureq.github.io/cert-manager-webhook-ovh/)
 - ✨ deploy multiple `Issuer` (namespaced) and `ClusterIssuer` via chart
 - ✨ either specify your OVH credentials, or use an existing secret
 - ✨ OVH credential are all stored in a secret (ApplicationKey, ApplicaitonSecret, ConsumerKey)
@@ -70,7 +78,7 @@
 - ✨ move some helm logic in _helpers.tpl
 - ✨ completely rework `values.yaml` to support creating issuers and ovh credentials
 - ✨ create role and bind it so the webhook can access necessary secrets
-- 📄 documentation and helm chart hosted at https://aureq.github.io/cert-manager-webhook-ovh/
+- 📄 documentation and helm chart hosted at [https://aureq.github.io/cert-manager-webhook-ovh/](https://aureq.github.io/cert-manager-webhook-ovh/)
 
 ## v0.4.0-alpha.0
 
