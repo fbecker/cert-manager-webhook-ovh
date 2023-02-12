@@ -1,0 +1,30 @@
+{
+    "default": true,
+    "MD013": {
+        "code_blocks": false,
+        "line_length": 300,
+        "tables": false
+    },
+    "MD024": false,
+    "MD040": false,
+    "MD044": {
+        "code_blocks": false,
+        "names": [
+            "JavaScript",
+            "TypeScript",
+            "Pulumi",
+            "Policy Pack",
+            "Premium Policy",
+            "Premium Policies"
+        ]
+    },
+    "MD048": {
+        "style": "backtick"
+    },
+    "MD049": {
+        "style": "underscore"
+    },
+    "MD050": {
+        "style": "asterisk"
+    }
+}
