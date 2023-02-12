@@ -7,6 +7,7 @@
 - ⏩ update cert-manager dependency to v1.11.0
 - ⏩ update k8s dependency to v0.26.0
 - ✨ build image using Go 1.19.5
+- ✨ initial work to build arm64 and armv7 images
 
 ## v0.4.1
 
