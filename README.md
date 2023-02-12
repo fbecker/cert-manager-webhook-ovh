@@ -16,7 +16,7 @@ Please star this repository to help others find it.
 
 ## Documentation
 
-The documentation is available at https://aureq.github.io/cert-manager-webhook-ovh/
+The documentation is available at [https://aureq.github.io/cert-manager-webhook-ovh/](https://aureq.github.io/cert-manager-webhook-ovh/)
 
 ## Maintainers
 
@@ -39,3 +39,4 @@ The documentation is available at https://aureq.github.io/cert-manager-webhook-o
 - [@aegaeonit](https://github.com/aegaeonit)
 - [@TartanLeGrand](https://github.com/TartanLeGrand)
 - [@Zcool85](https://github.com/Zcool85)
+- [Yethal](https://github.com/Yethal)
