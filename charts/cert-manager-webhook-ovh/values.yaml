@@ -145,7 +145,7 @@ securityContext:
 
 image:
   repository: ghcr.io/aureq/cert-manager-webhook-ovh
-  tag: v0.4.2-alpha.0
+  tag: v0.4.2-alpha.1
   pullPolicy: IfNotPresent
   # Use this set to assign a list of default pullSecrets
   pullSecrets: []
