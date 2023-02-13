@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.2-alpha.1
+
+### Noteworthy changes
+
+- 📄 minor consistency fix in README.md
+- ✨ start work to integrade with artifacthub.io
+
 ## v0.4.2-alpha.0
 
 ### Noteworthy changes
