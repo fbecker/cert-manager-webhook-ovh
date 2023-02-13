@@ -78,6 +78,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          cp LICENSE charts/cert-manager-webhook-ovh/
+          cp README.md charts/cert-manager-webhook-ovh/
           mkdir -p tmp/packages
           helm package --destination tmp/packages/ charts/cert-manager-webhook-ovh/
           cp charts/cert-manager-webhook-ovh/Chart.yaml tmp/
