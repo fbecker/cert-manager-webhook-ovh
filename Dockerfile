@@ -1,4 +1,4 @@
-FROM docker.io/golang:1.19-alpine3.16 as build
+FROM docker.io/golang:1.19-alpine3.17 as build
 
 RUN apk update && \
     apk upgrade && \
@@ -11,7 +11,7 @@ COPY . .
 RUN go mod download
 RUN CGO_ENABLED=0 go build -o /go/bin/app -ldflags '-s -w -extldflags "-static"' .
 
-FROM alpine:3.16
+FROM alpine:3.17
 
 COPY --from=build /go/bin/app /
 
