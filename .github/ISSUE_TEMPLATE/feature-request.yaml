@@ -1,17 +1,22 @@
----
 name: Feature request
-about: A request for a new feature or an update to an existing feature
+description: A request for a new feature or an update to an existing feature
 labels: ["enhancement"]
-assignees: ''
-
----
-
-## Hello!
-<!-- Please leave this section as-is, it's designed to help others in the community know how to interact with our GitHub issues. -->
-
-- Vote on this issue by adding a 👍 reaction
-- If you want to implement this feature, comment to let us know (we'll work with you on design, scheduling, etc.)
-
-## Enhancement details
-
-<!-- Enhancement requests are most helpful when they describe the problem you're having as well as articulating the potential solution you'd like to see built. -->
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature request! Please fill the form below.
+  - type: textarea
+    id: what-would-you-like
+    attributes:
+      label: What would you like?
+      description: Provide a general description for this enhancement request, including what you would like to accomplish. Enhancement requests are most helpful when they describe the problem you're having as well as articulating the potential solution you'd like to see built.
+    validations:
+      required: true
+  - type: textarea
+    id: voting
+    attributes:
+      label: Contributing
+      value: |
+        Vote on this issue by adding a 👍 reaction.
+        To contribute a fix for this issue, leave a comment (and link to your pull request, if you've opened one already).
