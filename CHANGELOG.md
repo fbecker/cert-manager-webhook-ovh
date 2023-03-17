@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.4.2
+
+### Noteworthy changes
+
+- ✨ build images for amd64, arm64 and armv7 architectures
+- 🐙 add issue templates for bugs and feature requests
+- 🤖 configure dependabot to get alerts on vulnerabilities
+- 📄 add disclaimer about support and code of conduct
+- ✨ integration with [artifacthub.io](https://artifacthub.io/packages/helm/cert-manager-webhook-ovh/cert-manager-webhook-ovh)
+- 📄 minor inconsistency fix in README.md
+- 📄 add steps to make a release
+- ⏩ update cert-manager dependency to v1.11.0
+- ⏩ update k8s dependency to v0.26.0
+- ⏩ build image using Go 1.19.7
+- ⏩ upgrade alpine to 3.17
+
 ## v0.4.2-alpha.1
 
 ### Noteworthy changes
