@@ -18,6 +18,20 @@ Please star this repository to help others find it.
 
 The documentation is available at [https://aureq.github.io/cert-manager-webhook-ovh/](https://aureq.github.io/cert-manager-webhook-ovh/)
 
+## Artifact details
+
+See [artifacthub.io](https://artifacthub.io/packages/helm/cert-manager-webhook-ovh/cert-manager-webhook-ovh)
+
+## Support
+
+We would like to inform our users that this repository is maintained by a volunteer, and as such, it is a best effort support, and not a commercial service.
+While we strive to provide the best possible support to our users, we cannot guarantee immediate or comprehensive responses to all queries.
+Therefore, we advise that users seeking professional support should contact the author directly.
+
+We also want to emphasize that any form of abuse or entitlement towards our volunteer maintainers will not be tolerated.
+Our volunteers work hard to provide support to the community, and we expect all users to treat them with respect and appreciation.
+We appreciate your understanding and cooperation in maintaining a positive and productive environment for everyone involved in this community-driven project.
+
 ## Release workflow
 
 - Prepare `CHANGELOG.md` for `vx.y.z`
