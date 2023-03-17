@@ -15,6 +15,7 @@
 - ⏩ update k8s dependency to v0.26.0
 - ⏩ build image using Go 1.19.7
 - ⏩ upgrade alpine to 3.17
+- ⏩ update Chart.yaml and `values.yaml` to use latest container image
 
 ## v0.4.2-alpha.1
 
