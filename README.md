@@ -18,6 +18,13 @@ Please star this repository to help others find it.
 
 The documentation is available at [https://aureq.github.io/cert-manager-webhook-ovh/](https://aureq.github.io/cert-manager-webhook-ovh/)
 
+## Release workflow
+
+- Prepare `CHANGELOG.md` for `vx.y.z`
+- Commit all changes
+- Push all commits
+- run `bash .github/scripts/changelog.sh vx.y.z`
+
 ## Maintainers
 
 - [@aureq](https://github.com/aureq)
