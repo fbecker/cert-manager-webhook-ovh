@@ -22,13 +22,16 @@ spec:
       securityContext:
         runAsUser: {{ .Values.securityContext.runAsUser }}
         runAsGroup: {{ .Values.securityContext.runAsGroup }}
+      {{- if .Values.hostNetwork }}
+      hostNetwork: true
+      {{- end }}
 {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-            - --secure-port=8443
+            - --secure-port={{ .Values.port }}
             - --tls-cert-file=/tls/tls.crt
             - --tls-private-key-file=/tls/tls.key
           env:
@@ -40,7 +43,7 @@ spec:
             {{- end}}
           ports:
             - name: https
-              containerPort: 8443
+              containerPort: {{ .Values.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
