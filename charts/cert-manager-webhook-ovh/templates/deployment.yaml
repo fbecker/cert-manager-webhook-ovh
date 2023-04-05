@@ -31,7 +31,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-            - --secure-port={{ .Values.port }}
+            - --secure-port={{ .Values.port | default 8443 }}
             - --tls-cert-file=/tls/tls.crt
             - --tls-private-key-file=/tls/tls.key
           env:
@@ -43,7 +43,7 @@ spec:
             {{- end}}
           ports:
             - name: https
-              containerPort: {{ .Values.port }}
+              containerPort: {{ .Values.port | default 8443 }}
               protocol: TCP
           livenessProbe:
             httpGet:

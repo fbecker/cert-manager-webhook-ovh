@@ -170,7 +170,15 @@ service:
   type: ClusterIP
   port: 443
 
+# Specifies if the webhook should be started in hostNetwork mode.
+#
+# Required for use in some managed kubernetes clusters (such as AWS EKS) with custom
+# CNI (such as calico), because control-plane managed by AWS cannot communicate
+# with pods' IP CIDR and admission webhooks are not working
 hostNetwork: false
+
+# The port used by the applciation to expose the service.
+# It may be usefull to change it if the hostNetwork mode is activated to use an available port.
 port: 8443
 
 resources: {}
