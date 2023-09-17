@@ -139,6 +139,11 @@ issuers:
     #     # The key name in the secret above that holds the actual OVH consumer key value
     #     key: consumerKey
 
+rbac:
+  # If the secret of the issuer is in a different namespace, change `Role` (default)
+  # to `ClusterRole` so the webhook is able to access this secret.
+  roleType: Role
+
 # If enabled (default) the webhook will run as the specified user and group.
 # Furthermore, the specified allowPrivilegeEscalation and readOnlyRootFilesystem are applied to the pod.
 securityContext:
