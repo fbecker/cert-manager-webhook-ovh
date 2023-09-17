@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.0-alpha.1
+
+### Noteworthy changes
+
+- Bump google.golang.org/grpc from 1.51.0 to 1.53.0
+- 📄 document 3 more configuration entries in `values.yaml`
+- ⏩ make this chart compatible with helm 3 by settings `apiVersion` to `v2`
+- ⏩ drop `v` in `appVersion` and `version` fields, set `"0.5.0"`
+- 🌿 udpate `image.tag` value to use SemVer 2.0 and set its values to `"0.5.0"`
+- ⏩ update dependency for github.com/ovh/go-ovh to v1.4.2
+
 ## v0.4.2
 
 ### Noteworthy changes
