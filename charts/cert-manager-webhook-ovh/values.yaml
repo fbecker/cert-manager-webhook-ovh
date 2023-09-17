@@ -187,10 +187,14 @@ resources: {}
   #  cpu: 200m
   #  memory: 96Mi
 
+# see https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
 nodeSelector: {}
 
+# see https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
 tolerations: []
 
+# see https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/
 affinity: {}
 
+# see https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
 annotations: {}
