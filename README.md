@@ -61,3 +61,6 @@ We appreciate your understanding and cooperation in maintaining a positive and p
 - [@TartanLeGrand](https://github.com/TartanLeGrand)
 - [@Zcool85](https://github.com/Zcool85)
 - [@Yethal](https://github.com/Yethal)
+- [Benjamin Maisonnas](https://github.com/Benzhaomin)
+- [Kebree](https://github.com/Kebree)
+- [Alissia01](https://github.com/Alissia01)
