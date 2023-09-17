@@ -93,9 +93,7 @@ if [ ! -z "$(echo $CURRENT_VERSION | sed  '/-\(alpha\|beta\|rc\)/!d')" ]; then
     GH_OPTS="--prerelease"
 fi
 
-# prepend a `v` in front of $CURRENT_VERSION to trigger GHA
-# this is needed since
-gh release create "v$CURRENT_VERSION" --notes-file "$RELEASE_CHANGELOG" $GH_OPTS
+gh release create "$CURRENT_VERSION" --notes-file "$RELEASE_CHANGELOG" $GH_OPTS
 
 sleep 2
 
