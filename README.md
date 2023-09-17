@@ -34,10 +34,10 @@ We appreciate your understanding and cooperation in maintaining a positive and p
 
 ## Release workflow
 
-- Prepare `CHANGELOG.md` for `vx.y.z`
+- Prepare `CHANGELOG.md` for `x.y.z`
 - Commit all changes
 - Push all commits
-- run `bash .github/scripts/changelog.sh vx.y.z`
+- run `bash .github/scripts/changelog.sh x.y.z`
 
 ## Maintainers
 
