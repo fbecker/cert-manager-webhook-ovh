@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.0-alpha.2
+
+### Noteworthy changes
+
+- ✨ add support for `readOnlyRootFilesystem` on the deployment (thanks @Benzhaomin)
+- 🐛 typo fix
+- ✨ add annotation support (thanks @Benzhaomin)
+- ✨ add ref link about `nodeSelector`, `tolerations`, `affinity` and `annotations`
+- ✨ choose rbac role type (default `Role`)
+- ⏩ build with go 1.20
+- ⏩ upgrade k8s dependencies to 0.28.1
+- ⏩ upgrade github.com/cert-manager/cert-manager to v1.13.0
+- ⏩ use alpine 3.18 as base image
+
 ## 0.5.0-alpha.1
 
 ### Noteworthy changes
