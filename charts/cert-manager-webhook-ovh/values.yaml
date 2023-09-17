@@ -8,8 +8,12 @@
 # here is recommended.
 groupName: acme.mycompany.example
 
+# The values below should match your cert-amanger deployment.
+# If not, you will get permissions errors.
 certManager:
+  # namespace in which your cert-manager is deployed
   namespace: cert-manager
+  # cert-manager serverAccount name (default: cert-manager)
   serviceAccountName: cert-manager
 
 issuers:
