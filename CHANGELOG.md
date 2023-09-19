@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.5.0
+
+### Noteworthy changes
+
+- ✨ add support for `readOnlyRootFilesystem` on the deployment (thanks @Benzhaomin)
+- ✨ add Deployment annotation support (thanks @Benzhaomin)
+- ✨ add ref link about `nodeSelector`, `tolerations`, `affinity` and `annotations`
+- ✨ choose rbac role type (default `Role`) (thanks @Alissia01)
+- 📄 document 3 more configuration entries in `values.yaml`
+- 🌿 make this chart compatible with helm 3 by settings `apiVersion` to `v2`
+- 🌿 drop `v` in `appVersion` and `version` fields, set `"0.5.0"`
+- 🌿 udpate `image.tag` value to use SemVer 2.0 and set its values to `"0.5.0"`
+- 🐛 typo fix
+
+### Dependencies
+
+- ⏩ upgrade github.com/cert-manager/cert-manager to v1.13.0
+- ⏩ build with go 1.20
+- ⏩ upgrade k8s dependencies to 0.28.1
+- ⏩ use alpine 3.18 as base image
+- ⏩ update dependency for github.com/ovh/go-ovh to v1.4.2
+- ⏩ Bump google.golang.org/grpc from 1.51.0 to 1.53.0
+
 ## 0.5.0-alpha.2
 
 ### Noteworthy changes
@@ -18,10 +41,10 @@
 
 ### Noteworthy changes
 
-- Bump google.golang.org/grpc from 1.51.0 to 1.53.0
+- ⏩ Bump google.golang.org/grpc from 1.51.0 to 1.53.0
 - 📄 document 3 more configuration entries in `values.yaml`
-- ⏩ make this chart compatible with helm 3 by settings `apiVersion` to `v2`
-- ⏩ drop `v` in `appVersion` and `version` fields, set `"0.5.0"`
+- 🌿 make this chart compatible with helm 3 by settings `apiVersion` to `v2`
+- 🌿 drop `v` in `appVersion` and `version` fields, set `"0.5.0"`
 - 🌿 udpate `image.tag` value to use SemVer 2.0 and set its values to `"0.5.0"`
 - ⏩ update dependency for github.com/ovh/go-ovh to v1.4.2
 
