@@ -13,6 +13,7 @@
 - 🌿 drop `v` in `appVersion` and `version` fields, set `"0.5.0"`
 - 🌿 udpate `image.tag` value to use SemVer 2.0 and set its values to `"0.5.0"`
 - 🐛 typo fix
+- ⏩ update k8s.io/apiserver to v0.28.2 due to security (dependabot)
 
 ### Dependencies
 
