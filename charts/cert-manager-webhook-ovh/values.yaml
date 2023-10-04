@@ -145,13 +145,17 @@ rbac:
   roleType: Role
 
 # If enabled (default) the webhook will run as the specified user and group.
-# Furthermore, the specified allowPrivilegeEscalation and readOnlyRootFilesystem are applied to the pod.
+# Furthermore, the specified allowPrivilegeEscalation and readOnlyRootFilesystem are applied to the container.
+# pod securityContext and container securityContext will be inserted as-is in their respective places so that
+# it is possible to edit any supported field (e.g. capabilities, seccompProfile, privileged)
 securityContext:
   enabled: true
-  runAsUser: 1000
-  runAsGroup: 1000
-  allowPrivilegeEscalation: false
-  readOnlyRootFilesystem: true
+  pod:
+    runAsUser: 1000
+    runAsGroup: 1000
+  container:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
 
 image:
   repository: ghcr.io/aureq/cert-manager-webhook-ovh
@@ -214,3 +218,4 @@ affinity: {}
 
 # see https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
 annotations: {}
+podAnnotations: {}
