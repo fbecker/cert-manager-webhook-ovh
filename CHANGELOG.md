@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.1
+
+### Dependencies
+
+- ⏩ bump go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp to v0.45.0 to address CVE-2023-45142. See [Dependabot](https://github.com/aureq/cert-manager-webhook-ovh/security/dependabot/6).
+- ⏩ bump golang.org/x/net from 0.15.0 to 0.17.0. See [Dependabot PR](https://github.com/aureq/cert-manager-webhook-ovh/pull/33).
+
 ## 0.5.0
 
 ### Noteworthy changes
