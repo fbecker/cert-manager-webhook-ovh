@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.5.2
+
+### Dependencies
+
+- ⏩ Bump google.golang.org/grpc from 1.58.2 to 1.58.3. See [Dependabot](https://github.com/aureq/cert-manager-webhook-ovh/pull/34)
+- ⏩ Bump go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc from 0.35.0 to 0.46.0. See [Dependabot](https://github.com/aureq/cert-manager-webhook-ovh/pull/35)
+- ⏩ Bump go.opentelemetry.io/otel/exporters/otlp/otlptrace from 1.19.0 to 1.20.0
+- ⏩ Bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc from 1.19.0 to 1.20.0
+- ⏩ Bump go.opentelemetry.io/otel/sdk from 1.19.0 to 1.20.0
+- ⏩ Bump golang.org/x/sys from 0.13.0 to 0.14.0
+
+### Known issues
+
+- 🔥 Alpine 3.18.4 is vulnerable to the following CVEs. Should be fixed in [3.18.5 release](https://gitlab.alpinelinux.org/groups/alpine/-/milestones/5#tab-issues).
+  - [CVE-2023-5363](https://avd.aquasec.com/nvd/cve-2023-5363)
+  - [CVE-2023-5678](https://avd.aquasec.com/nvd/cve-2023-5678)
+  - [CVE-2023-5363](https://avd.aquasec.com/nvd/cve-2023-5363)
+  - [CVE-2023-5678](https://avd.aquasec.com/nvd/cve-2023-5678)
+
 ## 0.5.1
 
 ### Dependencies
