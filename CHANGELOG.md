@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.6.0
+
+### Noteworthy changes
+
+- ⚠️ Separate `securityContext` for both `container` and `pod`. See `values.yaml` for more details. See [#32](https://github.com/aureq/cert-manager-webhook-ovh/pull/32). Authored by [Mathieu Sensei](https://github.com/hyu9a).
+- ✨ Support `podAnnotations`. See [#32](https://github.com/aureq/cert-manager-webhook-ovh/pull/32). Authored by [Mathieu Sensei](https://github.com/hyu9a).
+
+### Dependencies
+
+- ⏩ Use Alpine to 3.19.1 as base image
+- ⏩ Use Go 1.21.6 to build webhook
+- ⏩ Bump github.com/cert-manager/cert-manager 1.13.0 to 1.14.1
+- ⏩ Bump github.com/ovh/go-ovh from 1.4.2 to 1.4.3
+- ⏩ Bump golang.org/x/crypto from 0.14.0 to 0.18.0
+- ⏩ Bump golang.org/x/net from 0.17.0 to 0.20.0
+- ⏩ Bump k8s.io/api from 0.29.0 to 0.29.1
+- ⏩ Bump k8s.io/apiextensions-apiserver from 0.29.0 to 0.29.1
+
 ## 0.5.2
 
 ### Dependencies
