@@ -64,3 +64,4 @@ We appreciate your understanding and cooperation in maintaining a positive and p
 - [Benjamin Maisonnas](https://github.com/Benzhaomin)
 - [Kebree](https://github.com/Kebree)
 - [Alissia01](https://github.com/Alissia01)
+- [Mathieu Sensei](https://github.com/hyu9a)
