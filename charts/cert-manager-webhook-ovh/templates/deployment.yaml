@@ -18,18 +18,23 @@ spec:
     metadata:
       labels:
         {{- include "cert-manager-webhook-ovh.selectorLabels" $ | nindent 8 }}
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
     spec:
       imagePullSecrets:
 {{ toYaml .Values.image.pullSecrets | indent 8 }}
       serviceAccountName: {{ include "cert-manager-webhook-ovh.fullname" . }}
-{{- if .Values.securityContext.enabled }}
+      {{- if .Values.securityContext.enabled }}
+      {{- with .Values.securityContext.pod }}
       securityContext:
-        runAsUser: {{ .Values.securityContext.runAsUser }}
-        runAsGroup: {{ .Values.securityContext.runAsGroup }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- end }}
       {{- if .Values.hostNetwork }}
       hostNetwork: true
       {{- end }}
-{{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
@@ -65,11 +70,12 @@ spec:
               readOnly: true
           resources:
 {{ toYaml .Values.resources | indent 12 }}
-{{- if .Values.securityContext.enabled }}
+          {{- if .Values.securityContext.enabled }}
+          {{- with .Values.securityContext.container }}
           securityContext:
-            allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
-            readOnlyRootFilesystem: {{ .Values.securityContext.readOnlyRootFilesystem }}
-{{- end }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- end }}
       volumes:
         - name: certs
           secret:
