@@ -6,6 +6,7 @@
 
 - ⚠️ Separate `securityContext` for both `container` and `pod`. See `values.yaml` for more details. See [#32](https://github.com/aureq/cert-manager-webhook-ovh/pull/32). Authored by [Mathieu Sensei](https://github.com/hyu9a).
 - ✨ Support `podAnnotations`. See [#32](https://github.com/aureq/cert-manager-webhook-ovh/pull/32). Authored by [Mathieu Sensei](https://github.com/hyu9a).
+- 🌿 Comment out `image.tag` as it's not needed unless someone wants to override the container image version
 
 ### Dependencies
 
